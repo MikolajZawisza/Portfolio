@@ -42,27 +42,34 @@ public class MainActivity extends AppCompatActivity {
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, studentsToShow);
         listView.setAdapter(adapter);
 
-        listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Project project = (Project) adapterView.getItemAtPosition(i);
 
-                    goToAnActivity(view);
+                String msg=project.getName();
+                goToDetailsActivity(view,msg);
 
                 /*Toast toast = Toast.makeText(getApplicationContext(),
                         project.getName(),
                         Toast.LENGTH_SHORT);
                 toast.show();*/
-                return false;
             }
         });
 
 
     }
 
-    public void goToAnActivity(View view) {
-        Intent intent = new Intent(this, Main2Activity.class);
+    public void goToDetailsActivity(View view,String msg) {
+        Intent intent = new Intent(this, ActivityDetails.class);
+        intent.putExtra("name",msg);
+        startActivity(intent);
+    }
+
+    public void goToAddActivity(View view)
+    {
+        Intent intent = new Intent(this, ActivityAdd.class);
         startActivity(intent);
     }
 
