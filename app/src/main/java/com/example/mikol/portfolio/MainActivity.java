@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayAdapter<Project> adapter;
     Dao<Project> projectDao;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,15 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         OpenHelper openHelper = new OpenHelper(getApplicationContext(), DB_NAME, null, DB_VERSION);
         projectDao = new ProjectDao(openHelper.getWritableDatabase());
-        ListView listView = findViewById(R.id.projectList);
-        List<Project> projects = Arrays.asList
-                (
-              new Project(0, "Portfolio", "Ala ma kota kot ma ale", "patt yo code"),
-               new Project(0,"Kotek LUAN", "Luan ma Ale,Ala ma Luan","patt yo code")
-                 );
-        for(int i = 0; i < projects.size(); i++){
-            projectDao.save(projects.get(i));
-        }
+        listView= findViewById(R.id.projectList);
 
         List<Project> studentsToShow = projectDao.getAll();
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, studentsToShow);
@@ -49,11 +42,6 @@ public class MainActivity extends AppCompatActivity {
 
                 String msg=project.getName();
                 goToDetailsActivity(view,msg);
-
-                /*Toast toast = Toast.makeText(getApplicationContext(),
-                        project.getName(),
-                        Toast.LENGTH_SHORT);
-                toast.show();*/
             }
         });
 

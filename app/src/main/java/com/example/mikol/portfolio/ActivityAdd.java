@@ -9,21 +9,34 @@ import android.os.Bundle;
 import android.util.Log;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ipaulpro.afilechooser.utils.FileUtils;
 
+import static com.example.mikol.portfolio.ProjectTable.DB_NAME;
+import static com.example.mikol.portfolio.ProjectTable.DB_VERSION;
+
 public class ActivityAdd extends Activity {
-
     private static final int REQUEST_CODE = 6384;
-
-    private String pathToCode;
+    private String pathToCode="";
     TextView newtext;
+    EditText editNameProject;
+    EditText editDescriptionProjects;
+    String name;
+    String description;
+
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
         newtext= (TextView) findViewById(R.id.pathToCode);
+        editNameProject= (EditText) findViewById(R.id.editNameProject) ;
+        editDescriptionProjects= (EditText) findViewById(R.id.editDescriptionProjects);
+
+
     }
 
     public void showChooser(View view) {
@@ -65,4 +78,26 @@ public class ActivityAdd extends Activity {
         super.onActivityResult(requestCode, resultCode, data);
     }
 
+    public void addProject(View view)
+    {
+        name =editNameProject.getText().toString();
+        description=editDescriptionProjects.getText().toString();
+
+        if((!name.matches(""))&&(!description.matches(""))&&(!pathToCode.matches("")))
+        {
+            OpenHelper openHelper = new OpenHelper(getApplicationContext(), DB_NAME, null, DB_VERSION);
+            ProjectDao projectDao = new ProjectDao(openHelper.getWritableDatabase());
+            Project project=new Project(0,name,description,pathToCode);
+            projectDao.save(project);
+            finish();
+
+        }
+        else
+        {
+            Toast toast = Toast.makeText(getApplicationContext(),"Check if all fields are filled",Toast.LENGTH_SHORT);
+            toast.show();
+
+        }
+
+    }
 }
