@@ -2,4 +2,5 @@
     <string name="app_name">Portfolio</string>
     <string name="project_name">Project name...</string>
     <string name="description">Description...</string>
+    <string name="chooser_title">File Chooser</string>
 </resources>

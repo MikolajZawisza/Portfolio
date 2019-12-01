@@ -7,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,8 +30,8 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.projectList);
         List<Project> projects = Arrays.asList
                 (
-            //    new Project(0, "Portfolio", "Ala ma kota kot ma ale", "patt yo code","path to photo"),
-             //   new Project(0,"Kotek LUAN", "Luan ma Ale,Ala ma Luan","patt yo code","path to photo")
+              new Project(0, "Portfolio", "Ala ma kota kot ma ale", "patt yo code"),
+               new Project(0,"Kotek LUAN", "Luan ma Ale,Ala ma Luan","patt yo code")
                  );
         for(int i = 0; i < projects.size(); i++){
             projectDao.save(projects.get(i));

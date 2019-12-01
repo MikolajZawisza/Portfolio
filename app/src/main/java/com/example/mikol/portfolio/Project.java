@@ -5,14 +5,13 @@ public class Project {
     private String name;
     private String description;
     private String pathToCode;
-    private String pathToPhoto;
 
-    public Project(int id, String name, String description,String pathToCode,String pathToPhoto) {
+    public Project(int id, String name, String description,String pathToCode) {
         this.id = id;
         this.name = name;
         this.description=description;
         this.pathToCode=pathToCode;
-        this.pathToPhoto=pathToPhoto;
+
     }
 
     public int getId() {
@@ -31,9 +30,6 @@ public class Project {
         return pathToCode;
     }
 
-    public String getPathToPhoto(){
-        return pathToPhoto;
-    }
 
     @Override
     public String toString() {

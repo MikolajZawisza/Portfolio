@@ -8,6 +8,8 @@
     tools:context="com.example.mikol.portfolio.ActivityAdd">
 
 
+
+
     <EditText
         android:id="@+id/editNameProject"
         android:layout_width="wrap_content"
@@ -42,6 +44,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.213" />
+
+    <Button
+        android:id="@+id/add_code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="showChooser"
+        android:text="Add Code"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.8" />
+
+    <TextView
+        android:id="@+id/pathToCode"
+        android:layout_width="239dp"
+        android:layout_height="40dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.168"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.803" />
 
 
 </android.support.constraint.ConstraintLayout>
