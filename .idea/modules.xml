@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/KAMILA-Portfolio.iml" filepath="$PROJECT_DIR$/KAMILA-Portfolio.iml" />
       <module fileurl="file://$PROJECT_DIR$/Portfolio.iml" filepath="$PROJECT_DIR$/Portfolio.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/Portfolio-app.iml" filepath="$PROJECT_DIR$/app/Portfolio-app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

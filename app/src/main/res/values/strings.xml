@@ -2,4 +2,8 @@
     <string name="app_name">Portfolio</string>
     <string name="project_name">Project name...</string>
     <string name="description">Description...</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment1">Hello Fragment1</string>
+    <string name="hello_blank_fragment2">Hello Fragment2</string>
 </resources>
