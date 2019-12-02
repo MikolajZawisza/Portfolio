@@ -2,10 +2,13 @@ package com.example.mikol.portfolio;
 import android.app.Activity;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import android.view.View;
@@ -25,9 +28,8 @@ public class ActivityAdd extends Activity {
     EditText editDescriptionProjects;
     String name;
     String description;
-
-
-
+    SharedPreferences.Editor editor ;
+    private SharedPreferences pref;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,20 @@ public class ActivityAdd extends Activity {
         editDescriptionProjects= (EditText) findViewById(R.id.editDescriptionProjects);
 
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        editDescriptionProjects.setText(pref.getString("input1", ""));
+        editNameProject.setText(pref.getString("input", ""));
+
+    }
+    @Override
+    public void onPause() {
+        super.onPause();
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("name", editNameProject.getText().toString());
+        editor.putString("description",editDescriptionProjects.getText().toString());
+        editor.apply();
     }
 
     public void showChooser(View view) {
@@ -83,21 +99,29 @@ public class ActivityAdd extends Activity {
         name =editNameProject.getText().toString();
         description=editDescriptionProjects.getText().toString();
 
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = pref.edit();
+        editNameProject = findViewById(R.id.editNameProject);
+        editDescriptionProjects = findViewById(R.id.editDescriptionProjects);
+
         if((!name.matches(""))&&(!description.matches(""))&&(!pathToCode.matches("")))
         {
             OpenHelper openHelper = new OpenHelper(getApplicationContext(), DB_NAME, null, DB_VERSION);
             ProjectDao projectDao = new ProjectDao(openHelper.getWritableDatabase());
             Project project=new Project(0,name,description,pathToCode);
             projectDao.save(project);
+            editor.clear();
+            editor.apply();
             finish();
-
         }
         else
         {
             Toast toast = Toast.makeText(getApplicationContext(),"Check if all fields are filled",Toast.LENGTH_SHORT);
             toast.show();
 
+            editor.putString("input", editNameProject.getText().toString());
+            editor.putString("input1", editDescriptionProjects.getText().toString());
+            editor.apply();
         }
-
     }
 }

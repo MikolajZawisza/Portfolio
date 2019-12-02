@@ -5,34 +5,34 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context="com.example.mikol.portfolio.ActivityAdd">
-
-
 
 
     <EditText
         android:id="@+id/editNameProject"
-        android:layout_width="wrap_content"
+        android:layout_width="334dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="#36929E"
+        android:background="@drawable/my_area_background"
         android:ems="10"
         android:hint="@string/project_name"
+        android:gravity="center"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.08"
+        app:layout_constraintHorizontal_bias="0.37"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052"
-        />
+        app:layout_constraintVertical_bias="0.052" />
 
     <EditText
         android:id="@+id/editDescriptionProjects"
         android:layout_width="334dp"
         android:layout_height="272dp"
-        android:backgroundTint="#36929E"
+        android:background="@drawable/my_area_background"
         android:ems="10"
         android:hint="@string/description"
+        android:gravity="top"
         android:inputType="textMultiLine"
         android:lines="8"
         android:maxLines="10"
@@ -47,21 +47,24 @@
 
     <Button
         android:id="@+id/add_code"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:background="@drawable/my_button_bg"
         android:onClick="showChooser"
         android:text="Add Code"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.948"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintVertical_bias="0.804" />
 
     <TextView
         android:id="@+id/pathToCode"
-        android:layout_width="239dp"
+        android:layout_width="220dp"
         android:layout_height="40dp"
+        android:layout_weight=".70"
+        android:background="@drawable/my_area_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.168"
@@ -74,8 +77,9 @@
         android:layout_width="281dp"
         android:layout_height="47dp"
         android:onClick="addProject"
-        android:text="ADD"
-        android:textColor="#4CAF50"
+        android:text="Save"
+        android:background="@drawable/my_button_bg"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
