@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background = "@drawable/background"
     android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/description"
         android:layout_width="335dp"
         android:layout_height="597dp"
+        android:background="@drawable/my_area_background"
         android:text=""
         tools:layout_editor_absoluteX="38dp"
         tools:layout_editor_absoluteY="67dp" />
