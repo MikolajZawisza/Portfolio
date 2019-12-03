@@ -2,12 +2,15 @@ package com.example.mikol.portfolio;
 import android.app.Activity;
 
 import android.content.ActivityNotFoundException;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.content.SharedPreferences;
 import android.net.Uri;
 
 import android.os.Bundle;
+import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -16,6 +19,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.ipaulpro.afilechooser.utils.FileUtils;
+
 
 import static com.example.mikol.portfolio.ProjectTable.DB_NAME;
 import static com.example.mikol.portfolio.ProjectTable.DB_VERSION;
@@ -28,22 +32,27 @@ public class ActivityAdd extends Activity {
     EditText editDescriptionProjects;
     String name;
     String description;
-    SharedPreferences.Editor editor ;
     private SharedPreferences pref;
+
+    private BoundService myService;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        startMyService();
+
         newtext= (TextView) findViewById(R.id.pathToCode);
         editNameProject= (EditText) findViewById(R.id.editNameProject) ;
         editDescriptionProjects= (EditText) findViewById(R.id.editDescriptionProjects);
-
-
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
         editDescriptionProjects.setText(pref.getString("input1", ""));
         editNameProject.setText(pref.getString("input", ""));
 
     }
+
     @Override
     public void onPause() {
         super.onPause();
@@ -61,6 +70,7 @@ public class ActivityAdd extends Activity {
         // Create the chooser Intent
         Intent intent = Intent.createChooser( target, getString(R.string.chooser_title));
         try {
+
             startActivityForResult(intent, REQUEST_CODE);
         } catch (ActivityNotFoundException e) {
             // The reason for the existence of aFileChooser
@@ -112,6 +122,7 @@ public class ActivityAdd extends Activity {
             projectDao.save(project);
             editor.clear();
             editor.apply();
+            stopMyService();
             finish();
         }
         else
@@ -124,4 +135,29 @@ public class ActivityAdd extends Activity {
             editor.apply();
         }
     }
+
+    private ServiceConnection serviceConnection = new ServiceConnection() {
+        public void onServiceDisconnected(ComponentName name) {
+            myService = null;
+        }
+
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            BoundService.MyBinder binder = (BoundService.MyBinder) service;
+            myService = binder.getMyService();
+        }
+    };
+
+
+    private void startMyService() {
+        Intent serviceIntent = new Intent(ActivityAdd.this, BoundService.class);
+        startService(serviceIntent);
+        bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    private void stopMyService() {
+        Intent serviceIntent = new Intent(this, BoundService.class);
+        unbindService(serviceConnection);
+        stopService(serviceIntent);
+    }
+
 }

@@ -35,6 +35,16 @@
             android:windowSoftInputMode="adjustPan|adjustResize">
         </activity>
 
+        <service
+
+            android:name=".BoundService"
+
+            android:enabled="true"
+
+            android:exported="true">
+
+        </service>
+
         <activity
             android:name="com.ipaulpro.afilechooser.FileChooserActivity"
             android:icon="@drawable/ic_chooser"
