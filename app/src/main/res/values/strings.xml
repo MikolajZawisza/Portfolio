@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">Portfolio</string>
-    <string name="project_name"> Project name...</string>
-    <string name="description"> Description...</string>
+    <string name="project_name"> Project name…</string>
+    <string name="description"> Description…</string>
     <string name="chooser_title">File Chooser</string>
     <string name="code_file">Code File</string>
     <string name="description_bn">Description</string>
+    <string name="save">Save</string>
+    <string name="add_code">Add Code</string>
+    <string name="add_project">Add Project</string>
+    <string name="show_code">Show code</string>
 </resources>

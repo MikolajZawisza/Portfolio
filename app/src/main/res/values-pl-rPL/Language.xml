@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Portfolio</string>
+    <string name="project_name">Nazwa projektu…</string>
+    <string name="description">Opis…</string>
+    <string name="chooser_title">Wybór pliku</string>
+    <string name="code_file">Plik kodu</string>
+    <string name="description_bn">Opis</string>
+    <string name="save">Zapisz</string>
+    <string name="add_code">Dodaj kod</string>
+    <string name="add_project">Dodaj Projekt</string>
+    <string name="show_code">Pokaż kod</string>
+</resources>

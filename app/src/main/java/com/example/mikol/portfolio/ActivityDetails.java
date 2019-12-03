@@ -17,7 +17,7 @@ public class ActivityDetails extends AppCompatActivity implements View.OnClickLi
 
     String name;
     FragmentManager fragmentManager;
-    String des="aaaaaaaa";
+    String des="";
     String path;
 
 
@@ -57,7 +57,7 @@ public class ActivityDetails extends AppCompatActivity implements View.OnClickLi
                 replaceFragment(fragment);
                 break;
             case R.id.code_bn:
-                bundle.putString("name",path);
+                bundle.putString("path",path);
                 fragment=new FileFragment();
                 fragmentManager=getSupportFragmentManager();
                 fragment.setArguments(bundle);
