@@ -10,10 +10,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import static com.example.mikol.portfolio.ProjectTable.DB_NAME;
+import static com.example.mikol.portfolio.ProjectTable.DB_VERSION;
+
 public class ActivityDetails extends AppCompatActivity implements View.OnClickListener {
 
     String name;
     FragmentManager fragmentManager;
+    String des="aaaaaaaa";
+    String path;
 
 
     @Override
@@ -24,7 +29,7 @@ public class ActivityDetails extends AppCompatActivity implements View.OnClickLi
         Intent intent = getIntent();
 
         TextView newtext = (TextView) findViewById(R.id.textView2);
-        
+
         name=intent.getStringExtra("name");
         newtext.setText(name);
 
@@ -34,21 +39,25 @@ public class ActivityDetails extends AppCompatActivity implements View.OnClickLi
 
         Button button2=findViewById(R.id.code_bn);
         button2.setOnClickListener(this);
+
+        wez(name);
     }
 
     @Override
     public void onClick(View view) {
         Fragment fragment =null;
         Bundle bundle = new Bundle();
-        bundle.putString("name",name);
+
         switch (view.getId()){
             case R.id.description_bn:
+                bundle.putString("name",des);
                 fragment=new DescriptionFragment();
                 fragmentManager=getSupportFragmentManager();
                 fragment.setArguments(bundle);
                 replaceFragment(fragment);
                 break;
             case R.id.code_bn:
+                bundle.putString("name",path);
                 fragment=new FileFragment();
                 fragmentManager=getSupportFragmentManager();
                 fragment.setArguments(bundle);
@@ -64,6 +73,15 @@ public class ActivityDetails extends AppCompatActivity implements View.OnClickLi
         transaction.addToBackStack(null);
         transaction.commit();
 
+    }
+
+    public void wez(String name){
+        Project project=null;
+        OpenHelper openHelper = new OpenHelper(getApplicationContext(), DB_NAME, null, DB_VERSION);
+        ProjectDao projectDao = new ProjectDao(openHelper.getReadableDatabase());
+        project=projectDao.getProject(name);
+        des=project.getDescription();
+        path=project.getPathToCode();
     }
 }
 
