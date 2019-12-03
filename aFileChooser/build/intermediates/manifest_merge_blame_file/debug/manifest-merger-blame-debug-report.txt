@@ -19,8 +19,8 @@
 19
 20    <uses-sdk
 21        android:minSdkVersion="7"
-21-->C:\Users\mikol\AndroidStudioProjects\Portfolio\aFileChooser\src\main\AndroidManifest.xml
+21-->C:\Users\Dominika\Documents\GitHub\Portfolio\aFileChooser\src\main\AndroidManifest.xml
 22        android:targetSdkVersion="7" />
-22-->C:\Users\mikol\AndroidStudioProjects\Portfolio\aFileChooser\src\main\AndroidManifest.xml
+22-->C:\Users\Dominika\Documents\GitHub\Portfolio\aFileChooser\src\main\AndroidManifest.xml
 23
 24</manifest>

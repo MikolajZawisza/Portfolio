@@ -1,12 +1,15 @@
 package com.example.mikol.portfolio;
 
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.os.Bundle;
+import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import java.util.List;
 
@@ -23,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     ListView listView;
     OpenHelper openHelper;
     List<Project> studentsToShow;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -62,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ActivityAdd.class);
         startActivity(intent);
     }
+
 
 
 }
