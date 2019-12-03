@@ -17,6 +17,13 @@
             </intent-filter>
         </activity>
 
+        <receiver android:name=".MyReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="android.intent.action.BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+
         <activity
             android:name=".ActivityDetails"
             android:label="Project">
