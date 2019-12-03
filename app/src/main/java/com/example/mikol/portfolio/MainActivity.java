@@ -2,6 +2,7 @@ package com.example.mikol.portfolio;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -36,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         studentsToShow=projectDao.getAll();
         adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, studentsToShow);
         listView.setAdapter(adapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
